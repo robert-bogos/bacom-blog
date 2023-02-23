@@ -1,0 +1,27 @@
+footer.footer .footer-region .fragment {
+  padding: 0;
+}
+
+footer .footer-region ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .footer-region li {
+  margin: var(--spacing-xs);
+  font-size: var(--type-body-s-size);
+  font-weight: 100;
+}
+
+footer .footer-region li a {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: 100%;
+}
+
+footer .footer-region li a .icon-milo path {
+  fill: var(--link-color);
+}
