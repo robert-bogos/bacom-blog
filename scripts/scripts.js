@@ -111,7 +111,7 @@ const CONFIG = {
 };
 
 // Load LCP image immediately
-(async function loadLCPImage() {
+(function loadLCPImage() {
   const lcpImg = document.querySelector('img');
   lcpImg?.removeAttribute('loading');
 }());
@@ -136,9 +136,8 @@ const miloLibs = setLibs(LIBS);
 }());
 
 (async function loadPage() {
-  const { loadArea, loadDelayed, setConfig } = await import(`${miloLibs}/utils/utils.js`);
+  const { loadArea, setConfig } = await import(`${miloLibs}/utils/utils.js`);
 
   setConfig({ ...CONFIG, miloLibs });
   await loadArea();
-  loadDelayed();
 }());
