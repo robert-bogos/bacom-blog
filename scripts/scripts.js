@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import { setLibs } from './utils.js';
+import { setLibs, buildAutoBlocks } from './utils.js';
 
 // Add project-wide style path here.
 const STYLES = '/styles/styles.css';
@@ -109,6 +109,7 @@ const CONFIG = {
   // geoRouting: 'on',
   productionDomain: 'business.adobe.com',
   contentRoot: '/blog',
+  taxonomyRoot: '/tags',
 };
 
 // Load LCP image immediately
@@ -140,5 +141,6 @@ const miloLibs = setLibs(LIBS);
   const { loadArea, setConfig } = await import(`${miloLibs}/utils/utils.js`);
 
   setConfig({ ...CONFIG, miloLibs });
+  await buildAutoBlocks();
   await loadArea();
 }());
