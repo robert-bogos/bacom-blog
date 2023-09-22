@@ -85,6 +85,50 @@ function buildTagsBlock() {
   }
 }
 
+function getImageCaption(picture) {
+  // Check if the parent element has a caption
+  const parentEl = picture.parentNode;
+  let caption = parentEl.querySelector('em');
+  if (caption) return caption;
+
+  // If the parent element doesn't have a caption, check if the next sibling does
+  const parentSiblingEl = parentEl.nextElementSibling;
+  if (!parentSiblingEl || !parentSiblingEl.querySelector('picture')) return undefined;
+  const firstChildEl = parentSiblingEl.firstChild;
+  caption = firstChildEl?.tagName === 'EM' ? firstChildEl : undefined;
+  return caption;
+}
+
+async function buildArticleHeader(el) {
+  const miloLibs = getLibs();
+  const { getMetadata, getConfig } = await import(`${miloLibs}/utils/utils.js`);
+  const { loadTaxonomy, getLinkForTopic, getTaxonomyModule } = await import(`${miloLibs}/blocks/article-feed/article-helpers.js`);
+  if (!getTaxonomyModule()) {
+    await loadTaxonomy();
+  }
+  const div = document.createElement('div');
+  const h1 = el.querySelector('h1');
+  const picture = el.querySelector('picture');
+  const caption = getImageCaption(picture);
+  const figure = document.createElement('div');
+  figure.append(picture, caption);
+  const category = getMetadata('category');
+  const author = getMetadata('author') || 'Adobe Communications Team';
+  const { locale } = getConfig();
+  const authorURL = getMetadata('author-url') || (author ? `${locale.contentRoot}/authors/${author.replace(/[^0-9a-z]/gi, '-').toLowerCase()}` : null);
+  const publicationDate = getMetadata('publication-date');
+  const categoryTag = getLinkForTopic(category);
+  const articleHeaderBlockEl = buildBlock('article-header', [
+    [`<p>${categoryTag}</p>`],
+    [h1],
+    [`<p>${authorURL ? `<a href="${authorURL}">${author}</a>` : author}</p>
+      <p>${publicationDate}</p>`],
+    [figure],
+  ]);
+  div.append(articleHeaderBlockEl);
+  el.prepend(div);
+}
+
 export async function buildAutoBlocks() {
   const miloLibs = getLibs();
   const { getMetadata } = await import(`${miloLibs}/utils/utils.js`);
@@ -92,6 +136,7 @@ export async function buildAutoBlocks() {
   try {
     if (getMetadata('publication-date') && !mainEl.querySelector('.article-header')) {
       buildTagsBlock(mainEl);
+      await buildArticleHeader(mainEl);
     }
   } catch (error) {
     // eslint-disable-next-line no-console
