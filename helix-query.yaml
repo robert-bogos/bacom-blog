@@ -1,23 +1,18 @@
 version: 1
 
 indices:
-  default:
+  blog-us:
     include:
-      - '/**'
+      - '/blog/'
+      - '/blog/basics/**'
+      - '/blog/how-to/**'
+      - '/blog/perspectives/**'
+      - '/blog/the-latest/**'
     exclude:
-      - '/gnav*'
-      - '/footer*'
-      - '/authors/**'
-      - '/banners/**'
-      - '/categories/**'
-      - '/docs/**'
-      - '/drafts/**'
-      - '/footer-banners/**'
-      - '/fragments/**'
-      - '/seo/**'
-      - '/tags/**'
+      - '**/fragments/**'
+      - '**/drafts/**'
     target: /query-index.xlsx
-    properties:
+    properties: &minProps
       author:
         select: head > meta[name="author"]
         value: |
@@ -26,6 +21,10 @@ indices:
         select: head > meta[property="og:title"]
         value: |
           attribute(el, 'content')
+      h1:
+        select: main h1
+        value: |
+          textContent(el)
       date:
         select: head > meta[name="publication-date"]
         value: |
@@ -58,3 +57,93 @@ indices:
         select: none
         value: |
           parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
+  
+  blog-uk:
+    include:
+      - '/uk/blog/'
+      - '/uk/blog/basics/**'
+      - '/uk/blog/how-to/**'
+      - '/uk/blog/perspectives/**'
+      - '/uk/blog/the-latest/**'
+    exclude:
+      - '**/fragments/**'
+      - '**/drafts/**'
+    properties:
+      <<: *minProps
+    target: /uk/query-index.xlsx
+
+  blog-au:
+    include:
+      - '/au/blog/'
+      - '/au/blog/basics/**'
+      - '/au/blog/how-to/**'
+      - '/au/blog/perspectives/**'
+      - '/au/blog/the-latest/**'
+    exclude:
+      - '**/fragments/**'
+      - '**/drafts/**'
+    properties:
+      <<: *minProps
+    target: /au/query-index.xlsx
+
+  fr:
+    include:
+      - '/fr/blog/'
+      - '/fr/blog/actualites/**'
+      - '/fr/blog/basics/**'
+      - '/fr/blog/how-to/**'
+      - '/fr/blog/perspectives/**'
+      - '/fr/blog/the-latest/**'
+    exclude:
+      - '**/fragments/**'
+      - '**/drafts/**'
+    properties:
+      <<: *minProps
+    target: /fr/query-index.xlsx
+
+  blog-de:
+    include:
+      - '/de/blog/'
+      - '/de/blog/basics/**'
+      - '/de/blog/grundlagen/**'
+      - '/de/blog/how-to/**'
+      - '/de/blog/neues/**'
+      - '/de/blog/perspectives/**'
+      - '/de/blog/perspektiven/**'
+      - '/de/blog/the-latest/**'
+    exclude:
+      - '**/fragments/**'
+      - '**/drafts/**'
+    properties:
+      <<: *minProps
+    target: /de/query-index.xlsx
+
+  blog-jp:
+    include:
+      - '/jp/blog/'
+      - '/jp/blog/basics/**'
+      - '/jp/blog/how-to/**'
+      - '/jp/blog/perspectives/**'
+      - '/jp/blog/the-latest/**'
+      - '/jp/blog/topic/**'
+      - '/jp/blog/trends/**'
+    exclude:
+      - '**/fragments/**'
+      - '**/drafts/**'
+    properties:
+      <<: *minProps
+    target: /jp/query-index.xlsx
+
+  blog-kr:
+    include:
+      - '/kr/blog/'
+      - '/kr/blog/basics/**'
+      - '/kr/blog/how-to/**'
+      - '/kr/blog/perspectives/**'
+      - '/kr/blog/the-latest/**'
+    exclude:
+      - '**/fragments/**'
+      - '**/drafts/**'
+    properties:
+      <<: *minProps
+    target: /kr/query-index.xlsx
