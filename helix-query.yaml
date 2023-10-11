@@ -72,6 +72,29 @@ indices:
       <<: *minProps
     target: /uk/query-index.xlsx
 
+  blog-uk-us:
+    include:
+      - '/uk/blog/'
+      - '/uk/blog/basics/**'
+      - '/uk/blog/how-to/**'
+      - '/uk/blog/perspectives/**'
+      - '/uk/blog/the-latest/**'
+      - '/blog/'
+      - '/blog/basics/**'
+      - '/blog/how-to/**'
+      - '/blog/perspectives/**'
+      - '/blog/the-latest/**'
+    exclude:
+      - '**/fragments/**'
+      - '**/drafts/**'
+    properties:
+      <<: *minProps
+      seoArticle:
+        select: head > meta[name="seo-article"]
+        value: |
+          attribute(el, 'content')
+    target: /uk/us-uk-query-index.xlsx
+
   blog-au:
     include:
       - '/au/blog/'
@@ -85,6 +108,29 @@ indices:
     properties:
       <<: *minProps
     target: /au/query-index.xlsx
+
+  blog-au-us:
+    include:
+      - '/au/blog/'
+      - '/au/blog/basics/**'
+      - '/au/blog/how-to/**'
+      - '/au/blog/perspectives/**'
+      - '/au/blog/the-latest/**'
+      - '/blog/'
+      - '/blog/basics/**'
+      - '/blog/how-to/**'
+      - '/blog/perspectives/**'
+      - '/blog/the-latest/**'
+    exclude:
+      - '**/fragments/**'
+      - '**/drafts/**'
+    properties:
+      <<: *minProps
+      seoArticle:
+        select: head > meta[name="seo-article"]
+        value: |
+          attribute(el, 'content')
+    target: /au/us-au-query-index.xlsx
 
   fr:
     include:
