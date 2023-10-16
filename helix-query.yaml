@@ -11,7 +11,7 @@ indices:
     exclude:
       - '**/fragments/**'
       - '**/drafts/**'
-    target: /query-index.xlsx
+    target: /blog/query-index.xlsx
     properties: &minProps
       author:
         select: head > meta[name="author"]
@@ -70,7 +70,7 @@ indices:
       - '**/drafts/**'
     properties:
       <<: *minProps
-    target: /uk/query-index.xlsx
+    target: /uk/blog/query-index.xlsx
 
   blog-uk-us:
     include:
@@ -107,7 +107,7 @@ indices:
       - '**/drafts/**'
     properties:
       <<: *minProps
-    target: /au/query-index.xlsx
+    target: /au/blog/query-index.xlsx
 
   blog-au-us:
     include:
@@ -145,7 +145,7 @@ indices:
       - '**/drafts/**'
     properties:
       <<: *minProps
-    target: /fr/query-index.xlsx
+    target: /fr/blog/query-index.xlsx
 
   blog-de:
     include:
@@ -162,7 +162,7 @@ indices:
       - '**/drafts/**'
     properties:
       <<: *minProps
-    target: /de/query-index.xlsx
+    target: /de/blog/query-index.xlsx
 
   blog-jp:
     include:
@@ -178,7 +178,7 @@ indices:
       - '**/drafts/**'
     properties:
       <<: *minProps
-    target: /jp/query-index.xlsx
+    target: /jp/blog/query-index.xlsx
 
   blog-kr:
     include:
@@ -192,4 +192,4 @@ indices:
       - '**/drafts/**'
     properties:
       <<: *minProps
-    target: /kr/query-index.xlsx
+    target: /kr/blog/query-index.xlsx
