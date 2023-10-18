@@ -108,6 +108,7 @@ const CONFIG = {
   },
   // geoRouting: 'on',
   productionDomain: 'business.adobe.com',
+  prodDomains: ['business.adobe.com'],
   contentRoot: '/blog',
   taxonomyRoot: '/tags',
 };
