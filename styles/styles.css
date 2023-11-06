@@ -107,6 +107,7 @@ main p picture img {
 }
 
 .article-feed .article-card-date,
+.gnav-search-results .article-card-date,
 .recommended-articles .article-card-date,
 .featured-article .featured-article-card-date {
   display: none;
