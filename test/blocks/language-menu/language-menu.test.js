@@ -1,7 +1,7 @@
 import { expect } from '@esm-bundle/chai';
 import { readFile } from '@web/test-runner-commands';
 
-const { default: init } = await import('../../../blocks/language-menu/language-menu.js');
+const { default: init } = await import('../../../bacom-blog/blocks/language-menu/language-menu.js');
 
 describe('Language Menu', () => {
   it('closes on Escape', async () => {
