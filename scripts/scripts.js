@@ -110,6 +110,7 @@ const CONFIG = {
   productionDomain: 'business.adobe.com',
   prodDomains: ['business.adobe.com'],
   contentRoot: '/blog',
+  codeRoot: '/blog',
   taxonomyRoot: '/tags',
 };
 
