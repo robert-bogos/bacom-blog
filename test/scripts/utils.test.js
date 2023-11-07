@@ -1,7 +1,7 @@
 import { expect } from '@esm-bundle/chai';
 import { readFile } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import { setLibs, buildAutoBlocks } from '../../bacom-blog/scripts/utils.js';
+import { setLibs, buildAutoBlocks } from '../../scripts/utils.js';
 
 describe('Libs', () => {
   it('Default Libs', () => {

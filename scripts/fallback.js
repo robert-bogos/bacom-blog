@@ -1,5 +1,3 @@
-/* eslint-disable */ 
-
 var div = document.createElement('div');
 div.style.width = '100%';
 div.style.position = 'absolute';
