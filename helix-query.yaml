@@ -138,6 +138,7 @@ indices:
       - '/fr/blog/actualites/**'
       - '/fr/blog/basics/**'
       - '/fr/blog/how-to/**'
+      - '/fr/blog/les-bases/**'
       - '/fr/blog/perspectives/**'
       - '/fr/blog/the-latest/**'
     exclude:
