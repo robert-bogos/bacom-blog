@@ -48,24 +48,26 @@ describe('Libs', () => {
 
 const metadata = await readFile({ path: './mocks/tagsHead.html' });
 
+window.lana = { log: () => {} };
+
 describe('Auto Blocks', () => {
   before(() => {
     setLibs('/libs');
   });
 
   beforeEach(() => {
-    sinon.stub(console, 'error');
+    sinon.stub(window.lana, 'log');
   });
 
   afterEach(() => {
-    console.error.restore();
+    window.lana.log.restore();
   });
 
   it('catches errors', async () => {
     document.head.innerHTML = metadata;
     document.body.innerHTML = '';
     await buildAutoBlocks();
-    expect(console.error.calledWith('Auto Blocking failed')).to.be.true;
+    expect(window.lana.log.called).to.be.true;
   });
 
   it('builds the tags block', async () => {

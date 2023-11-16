@@ -139,7 +139,6 @@ export async function buildAutoBlocks() {
       await buildArticleHeader(mainEl);
     }
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Auto Blocking failed', error);
+    window.lana?.log(`Auto Blocking failed: ${error}`, { tags: 'autoBlock' });
   }
 }
