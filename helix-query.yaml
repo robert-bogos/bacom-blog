@@ -93,7 +93,7 @@ indices:
         select: head > meta[name="seo-article"]
         value: |
           attribute(el, 'content')
-    target: /uk/us-uk-query-index.xlsx
+    target: /uk/blog/us-uk-query-index.xlsx
 
   blog-au:
     include:
@@ -130,7 +130,7 @@ indices:
         select: head > meta[name="seo-article"]
         value: |
           attribute(el, 'content')
-    target: /au/us-au-query-index.xlsx
+    target: /au/blog/us-au-query-index.xlsx
 
   fr:
     include:
