@@ -49,16 +49,11 @@ function buildBlock(blockName, content) {
     const rowEl = document.createElement('div');
     row.forEach((col) => {
       const colEl = document.createElement('div');
-      const vals = col.elems || [col];
-      vals.forEach((val) => {
-        if (val) {
-          if (typeof val === 'string') {
-            colEl.innerHTML += val;
-          } else {
-            colEl.appendChild(val);
-          }
-        }
-      });
+      if (typeof col === 'string') {
+        colEl.innerHTML = col;
+      } else {
+        colEl.appendChild(col);
+      }
       rowEl.appendChild(colEl);
     });
     blockEl.appendChild(rowEl);
@@ -73,15 +68,17 @@ function buildTagsBlock() {
   const tagsBlock = buildBlock('tags', tagsArray.join(', '));
   const main = document.querySelector('main');
   const recBlock = main.querySelector('.recommended-articles');
-  if (recBlock) {
-    // Put tags block before recommended articles block
-    if (recBlock.parentElement.childElementCount === 1) {
-      recBlock.parentElement.previousElementSibling.append(tagsBlock);
-    } else {
-      recBlock.before(tagsBlock);
-    }
-  } else {
+
+  if (!recBlock) {
     main.lastElementChild.append(tagsBlock);
+    return;
+  }
+
+  // Put tags block before recommended articles block
+  if (recBlock.parentElement.childElementCount === 1) {
+    recBlock.parentElement.previousElementSibling.append(tagsBlock);
+  } else {
+    recBlock.before(tagsBlock);
   }
 }
 
