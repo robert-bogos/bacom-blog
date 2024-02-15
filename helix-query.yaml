@@ -57,6 +57,30 @@ indices:
         select: none
         value: |
           parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
+      industry:
+        select: head > meta[name="industry"]
+        value: |
+          attribute(el, 'content')
+      customerJourneyStage:
+        select: head > meta[name="customer-journey-stage"]
+        value: |
+          attribute(el, 'content')
+      product:
+        select: head > meta[name="product"]
+        value: |
+          attribute(el, 'content')
+      audience:
+        select: head > meta[name="audience"]
+        value: |
+          attribute(el, 'content')
+      seoArticle:
+        select: head > meta[name="seo-article"]
+        value: |
+          attribute(el, 'content')
+      artworkSource:
+        select: head > meta[name="artwork-source"]
+        value: |
+          attribute(el, 'content')
   
   blog-uk:
     include:
