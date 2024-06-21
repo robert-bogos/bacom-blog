@@ -77,6 +77,16 @@
     },
     {
       "containerId": "tools",
+      "id": "floodgate",
+      "title": "Floodgate",
+      "environments": [ "edit" ],
+      "url": "https://main--bacom-blog--adobecom.hlx.page/tools/floodgate?milolibs=floodgateui",
+      "passReferrer": true,
+      "passConfig": true,
+      "includePaths": [ "**.xlsx**" ]
+    },
+    {
+      "containerId": "tools",
       "title": "Tag Selector",
       "id": "tag-selector",
       "environments": ["edit"],

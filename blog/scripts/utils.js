@@ -19,7 +19,7 @@ export const [setLibs, getLibs] = (() => {
     (prodLibs, location) => {
       libs = (() => {
         const { hostname, search } = location || window.location;
-        if (!(hostname.includes('.hlx.') || hostname.includes('local'))) return prodLibs;
+        if (!['.hlx.', '.stage.', 'local'].some((i) => hostname.includes(i))) return prodLibs;
         const branch = new URLSearchParams(search).get('milolibs') || 'main';
         if (branch === 'local') return 'http://localhost:6456/libs';
         return branch.includes('--') ? `https://${branch}.hlx.live/libs` : `https://${branch}--milo--adobecom.hlx.live/libs`;
@@ -69,10 +69,9 @@ function getImageCaption(picture) {
 
   // If the parent element doesn't have a caption, check if the next sibling does
   const parentSiblingEl = parentEl.nextElementSibling;
-  if (!parentSiblingEl || !parentSiblingEl.querySelector('picture')) return undefined;
+  if (!parentSiblingEl || !parentSiblingEl.querySelector('picture')) return '';
   const firstChildEl = parentSiblingEl.firstChild;
-  caption = firstChildEl?.tagName === 'EM' ? firstChildEl : undefined;
-  return caption;
+  if (firstChildEl?.tagName === 'EM') return firstChildEl;
 }
 
 async function buildArticleHeader(el) {
