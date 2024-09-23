@@ -113,11 +113,7 @@ const CONFIG = {
   codeRoot: '/blog',
   taxonomyRoot: '/tags',
   links: 'on',
-  stageDomainsMap: {
-    'business.stage.adobe.com': { 'business.adobe.com': 'origin' },
-    '--bacom-blog--adobecom.hlx.live': { 'business.adobe.com': 'origin' },
-    '--bacom-blog--adobecom.hlx.page': { 'business.adobe.com': 'origin' },
-  },
+  stageDomainsMap: { 'business.stage.adobe.com': { 'business.adobe.com': 'origin' } },
 };
 
 // Load LCP image immediately
